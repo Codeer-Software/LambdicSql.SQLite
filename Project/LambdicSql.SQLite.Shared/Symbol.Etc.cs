@@ -3,7 +3,7 @@ using LambdicSql.ConverterServices.SymbolConverters;
 using LambdicSql.Specialized.SymbolConverters;
 using System;
 
-namespace LambdicSql.Oracle
+namespace LambdicSql.SQLite
 {
     /// <summary>
     /// SQL Symbols.
