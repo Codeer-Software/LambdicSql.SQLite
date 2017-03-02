@@ -28,8 +28,6 @@ namespace Test
         [TestMethod]
         public void Test_CreateTable_SQLite()
         {
-            if (!_connection.IsTarget(TargetDB.SQLite)) return;
-
             CleanUpCreateDropTestTable();
 
             var sql = Db<DBForCreateTest>.Sql(db =>
