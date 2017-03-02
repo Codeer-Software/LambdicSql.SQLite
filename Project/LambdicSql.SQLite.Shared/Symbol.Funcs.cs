@@ -6,7 +6,7 @@ namespace LambdicSql.SQLite
     /// <summary>
     /// SQL Symbols.
     /// It can only be used within methods of the LambdicSql.Db class.
-    /// Use[using static LambdicSql.Keywords;], you can use to write natural SQL.
+    /// Use[using static LambdicSql.SQLite.Symbol;], you can use to write natural SQL.
     /// </summary>
     public static partial class Symbol
     {
