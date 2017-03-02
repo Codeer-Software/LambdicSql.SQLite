@@ -14,12 +14,7 @@ namespace Test
 {
     public enum TargetDB
     {
-        SqlServer,
-        Oracle,
-        Postgre,
-        MySQL,
         SQLite,
-        DB2
     }
 
     public static class TestSymbol
@@ -40,12 +35,7 @@ namespace Test
         static Dictionary<TargetDB, string> _targetDb = ((Func<Dictionary<TargetDB, string>>)delegate
         {
             var dic = new Dictionary<TargetDB, string>();
-            dic[TargetDB.SqlServer] = "SqlConnection";
             dic[TargetDB.SQLite] = "SQLiteConnection";
-            dic[TargetDB.Postgre] = "NpgsqlConnection";
-            dic[TargetDB.MySQL] = "MySqlConnection";
-            dic[TargetDB.Oracle] = "OracleConnection";
-            dic[TargetDB.DB2] = "DB2Connection";
             return dic;
         })();  
 

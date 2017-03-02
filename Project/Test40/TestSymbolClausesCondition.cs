@@ -268,8 +268,6 @@ WHERE NOT ((tbl_staff.name) IS NULL)");
         [TestMethod]
         public void Test_IsNull_3()
         {
-            if (!_connection.IsTarget(TargetDB.SqlServer, TargetDB.Postgre, TargetDB.MySQL, TargetDB.SQLite, TargetDB.DB2)) return;
-
             string val = "";
             var sql = Db<DB>.Sql(db =>
                Select(new SelectData
@@ -331,8 +329,6 @@ WHERE (tbl_staff.name) IS NOT NULL");
         [TestMethod]
         public void Test_IsNotNull_3()
         {
-            if (!_connection.IsTarget(TargetDB.SqlServer, TargetDB.Postgre, TargetDB.MySQL, TargetDB.SQLite, TargetDB.DB2)) return;
-            
             string val = "";
             var sql = Db<DB>.Sql(db =>
                Select(new SelectData
@@ -349,64 +345,6 @@ WHERE (tbl_staff.name) IS NOT NULL");
 	tbl_staff.id AS Id
 FROM tbl_staff
 WHERE (@val) IS NOT NULL", new Params() { { "@val", "" } });
-        }
-
-        [TestMethod]
-        public void Test_All_1()
-        {
-            if (!_connection.IsTarget(TargetDB.SqlServer, TargetDB.Oracle, TargetDB.Postgre, TargetDB.MySQL, TargetDB.DB2)) return;
-
-            var sql = Db<DB>.Sql(db =>
-                Select(new SelectData
-                {
-                    Id = db.tbl_staff.id
-                }).
-                From(db.tbl_staff).
-                Where(db.tbl_staff.id < All(Select(db.tbl_staff.id).From(db.tbl_staff))));
-
-            var datas = _connection.Query(sql).ToList();
-            AssertEx.AreEqual(sql, _connection,
-@"SELECT
-	tbl_staff.id AS Id
-FROM tbl_staff
-WHERE
-	(tbl_staff.id)
-	 <
-	ALL(
-		(SELECT
-			tbl_staff.id
-		FROM tbl_staff))");
-        }
-
-        [TestMethod]
-        public void Test_All_2()
-        {
-            if (!_connection.IsTarget(TargetDB.SqlServer, TargetDB.Oracle, TargetDB.Postgre, TargetDB.MySQL, TargetDB.DB2)) return;
-
-            var sub = Db<DB>.Sql(db => 
-                Select(db.tbl_staff.id).
-                From(db.tbl_staff));
-
-            var sql = Db<DB>.Sql(db =>
-                Select(new SelectData
-                {
-                    Id = db.tbl_staff.id
-                }).
-                From(db.tbl_staff).
-                Where(db.tbl_staff.id < All(sub)));
-
-            var datas = _connection.Query(sql).ToList();
-            AssertEx.AreEqual(sql, _connection,
-@"SELECT
-	tbl_staff.id AS Id
-FROM tbl_staff
-WHERE
-	(tbl_staff.id)
-	 <
-	ALL(
-		(SELECT
-			tbl_staff.id
-		FROM tbl_staff))");
         }
     }
 }
