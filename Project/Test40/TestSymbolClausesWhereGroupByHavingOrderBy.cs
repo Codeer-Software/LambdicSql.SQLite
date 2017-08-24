@@ -6,6 +6,7 @@ using LambdicSql.feat.Dapper;
 using static LambdicSql.SQLite.Symbol;
 using static Test.Helper.DBProviderInfo;
 using Test.Helper;
+using LambdicSql.SQLite;
 
 namespace Test
 {
