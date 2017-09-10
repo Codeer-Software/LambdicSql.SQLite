@@ -55,7 +55,7 @@ namespace Test
 	SUM(tbl_remuneration.money) AS Val1,
 	SUM(ALL tbl_remuneration.money) AS Val2
 FROM tbl_remuneration
-	JOIN tbl_staff ON (tbl_remuneration.staff_id) = (tbl_staff.id)
+	JOIN tbl_staff ON tbl_remuneration.staff_id = tbl_staff.id
 GROUP BY tbl_staff.id, tbl_staff.name");
         }
 
@@ -81,7 +81,7 @@ GROUP BY tbl_staff.id, tbl_staff.name");
 	COUNT(*) AS Val2,
 	COUNT(DISTINCT tbl_remuneration.money) AS Val3
 FROM tbl_remuneration
-	JOIN tbl_staff ON (tbl_remuneration.staff_id) = (tbl_staff.id)
+	JOIN tbl_staff ON tbl_remuneration.staff_id = tbl_staff.id
 GROUP BY tbl_staff.id, tbl_staff.name");
         }
         
@@ -107,7 +107,7 @@ GROUP BY tbl_staff.id, tbl_staff.name");
 	MIN(tbl_remuneration.money) AS Val2,
 	MAX(tbl_remuneration.money) AS Val3
 FROM tbl_remuneration
-	JOIN tbl_staff ON (tbl_remuneration.staff_id) = (tbl_staff.id)
+	JOIN tbl_staff ON tbl_remuneration.staff_id = tbl_staff.id
 GROUP BY tbl_staff.id, tbl_staff.name");
         }
 

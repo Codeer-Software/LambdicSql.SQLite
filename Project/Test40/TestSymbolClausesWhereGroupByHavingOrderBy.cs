@@ -51,7 +51,7 @@ namespace Test
             AssertEx.AreEqual(sql, _connection,
 @"SELECT *
 FROM tbl_remuneration
-WHERE (tbl_remuneration.id) = (@p_0)",
+WHERE tbl_remuneration.id = @p_0",
 1);
         }
 
@@ -69,7 +69,7 @@ WHERE (tbl_remuneration.id) = (@p_0)",
             AssertEx.AreEqual(sql, _connection,
 @"SELECT *
 FROM tbl_remuneration
-WHERE (tbl_remuneration.id) = (@p_0)",
+WHERE tbl_remuneration.id = @p_0",
 1);
         }
 
@@ -89,7 +89,7 @@ WHERE (tbl_remuneration.id) = (@p_0)",
             AssertEx.AreEqual(sql, _connection,
 @"SELECT *
 FROM tbl_remuneration
-WHERE (tbl_remuneration.id) = (@p_0)",
+WHERE tbl_remuneration.id = @p_0",
 1);
         }
 
@@ -222,7 +222,7 @@ GROUP BY tbl_remuneration.id, tbl_remuneration.staff_id");
 	tbl_remuneration.staff_id AS Id
 FROM tbl_remuneration
 GROUP BY tbl_remuneration.staff_id
-HAVING (@p_0) < (SUM(tbl_remuneration.money))",
+HAVING @p_0 < SUM(tbl_remuneration.money)",
 (decimal)100);
         }
 
@@ -246,7 +246,7 @@ HAVING (@p_0) < (SUM(tbl_remuneration.money))",
 	tbl_remuneration.staff_id AS Id
 FROM tbl_remuneration
 GROUP BY tbl_remuneration.staff_id
-HAVING (@p_0) < (SUM(tbl_remuneration.money))",
+HAVING @p_0 < SUM(tbl_remuneration.money)",
 (decimal)100);
         }
 
