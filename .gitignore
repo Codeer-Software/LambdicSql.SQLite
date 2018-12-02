@@ -252,4 +252,5 @@ paket-files/
 *.sln.iml
 
 Project/db.txt
+Project/bin.bin
 Project/SQLiteTest1.db
